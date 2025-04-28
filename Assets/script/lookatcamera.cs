@@ -21,4 +21,5 @@ public class lookatcamera : MonoBehaviour
         //Quaternion desiredRotation = Quaternion.LookRotation(target.position - transform.position);
         //transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, smoothSpeed * Time.deltaTime);
     }
+
 }
