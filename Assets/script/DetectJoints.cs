@@ -75,7 +75,7 @@ public class DetectJoints : MonoBehaviour
                 gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3((-pos.X + offset.x) * multiplier.x, (pos.Y + offset.y) * multiplier.y, (pos.Z + offset.z) * multiplier.z), lerpValue);
 
 
-                //cameraFollower.enabled = true; // enabled camera follower script after the first position set up because there is a bug lag if not
+                cameraFollower.enabled = true; // enabled camera follower script after the first position set up because there is a bug lag if not
             }
             //else
             //{

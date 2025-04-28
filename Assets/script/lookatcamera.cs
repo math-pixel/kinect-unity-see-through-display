@@ -10,7 +10,7 @@ public class lookatcamera : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //transform.LookAt(target.transform);
     }
 
     // Update is called once per frame
