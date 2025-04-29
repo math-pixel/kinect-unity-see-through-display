@@ -16,7 +16,7 @@ public class lookatcamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target.transform);
+        transform.LookAt(target.transform, Vector3.up);
         // Lissage de la rotation pour un effet de "LookAt" plus fluide
         //Quaternion desiredRotation = Quaternion.LookRotation(target.position - transform.position);
         //transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, smoothSpeed * Time.deltaTime);

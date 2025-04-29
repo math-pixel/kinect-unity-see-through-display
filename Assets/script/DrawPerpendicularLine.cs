@@ -22,7 +22,7 @@ public class DrawPerpendicularLine : MonoBehaviour
         //getAngleBetween(playerHead.transform.position, sourceObject.transform.position, Vector3.up);
 
         float angle = getAngleBetweenLines(sourceObject.transform.position, playerHead.transform.position, pointsOfObject[0], pointsOfObject[1]);
-        objecttoMove.transform.Rotate(angle, 0, 0);
+        objecttoMove.transform.eulerAngles = new Vector3(angle, 0, 0);
     }
 
     // Méthode pour accéder à l'angle depuis d'autres scripts
