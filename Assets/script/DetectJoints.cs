@@ -24,7 +24,7 @@ public class DetectJoints : MonoBehaviour
 
     public float treadshold = 1f;
 
-    public lookatcamera cameraFollower;
+    public Camera userCamera;
 
     public TMP_Text textDebugCamera;
 
@@ -75,7 +75,12 @@ public class DetectJoints : MonoBehaviour
                 gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3((-pos.X + offset.x) * multiplier.x, (pos.Y + offset.y) * multiplier.y, (pos.Z + offset.z) * multiplier.z), lerpValue);
 
 
-                //cameraFollower.enabled = true; // enabled camera follower script after the first position set up because there is a bug lag if not
+                // Change Camera FOV
+                //at 1 meter the reel object FOV needed is 22.6 and at 1.5 meter we need 13 FOV
+                float targetFOV = EstimateFOV((pos.Z + offset.z) * multiplier.z);
+                userCamera.fieldOfView = Mathf.Lerp(userCamera.fieldOfView, targetFOV, Time.deltaTime * 1f);
+
+                userCamera.enabled = true; // enabled camera follower script after the first position set up because there is a bug lag if not
             }
             //else
             //{
@@ -89,5 +94,21 @@ public class DetectJoints : MonoBehaviour
     {
         textDebugCamera.text = text;
         textDebugCamera.color = color;
+    }   
+
+    public float EstimateFOV(float distance)
+    {
+
+        float k = 20f;//save : 22.6f;
+        if (distance <= 0f)
+        {
+            Debug.LogError("La distance doit être > 0");
+            return 0f;
+        }
+
+        // Relation empirique : FOV = k / distance
+        float fov = (k / distance) * 10;
+        Debug.Log(fov);
+        return fov;
     }
 }

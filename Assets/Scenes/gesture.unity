@@ -822,7 +822,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 25
+  field of view: 22.6
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -869,6 +869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1380916152}
   smoothSpeed: 0.125
+  translateZ: 1.91
 --- !u!114 &522133526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,7 +1289,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: 0}
   lerpValue: 2
   treadshold: 0.1
-  cameraFollower: {fileID: 522133525}
+  userCamera: {fileID: 522133523}
   textDebugCamera: {fileID: 64879570}
 --- !u!4 &1216205192
 Transform:
