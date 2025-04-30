@@ -28,6 +28,8 @@ public class DetectJoints : MonoBehaviour
 
     public TMP_Text textDebugCamera;
 
+    public GameObject objectTargetlookAt;
+
     // Use this for initialization
     void Start()
     {
@@ -77,8 +79,18 @@ public class DetectJoints : MonoBehaviour
 
                 // Change Camera FOV
                 //at 1 meter the reel object FOV needed is 22.6 and at 1.5 meter we need 13 FOV
-                float targetFOV = EstimateFOV((pos.Z + offset.z) * multiplier.z);
+                float distance = Vector3.Distance(gameObject.transform.position, objectTargetlookAt.transform.position);
+                Debug.Log("distance " + distance);
+                float targetFOV = EstimateFOV(distance);
                 userCamera.fieldOfView = Mathf.Lerp(userCamera.fieldOfView, targetFOV, Time.deltaTime * 1f);
+
+
+                //Debug.Log("distance " + distance);
+                //float targetLookatPoint = EstimateDistanceYOfLookAtPoint(distance);
+                //lookatcamera lookAtScript = userCamera.GetComponent<lookatcamera>();
+                //lookAtScript.translateY = Mathf.Lerp(lookAtScript.translateY, targetLookatPoint, Time.deltaTime * 1f);
+                
+
 
                 userCamera.enabled = true; // enabled camera follower script after the first position set up because there is a bug lag if not
             }
@@ -99,7 +111,7 @@ public class DetectJoints : MonoBehaviour
     public float EstimateFOV(float distance)
     {
 
-        float k = 20f;//save : 22.6f;
+        float k = 17.2f;//save : 22.6f;
         if (distance <= 0f)
         {
             Debug.LogError("La distance doit être > 0");
@@ -108,7 +120,23 @@ public class DetectJoints : MonoBehaviour
 
         // Relation empirique : FOV = k / distance
         float fov = (k / distance) * 10;
-        Debug.Log(fov);
+        //Debug.Log(fov);
+        return fov;
+    }
+
+    public float EstimateDistanceYOfLookAtPoint(float distance)
+    {
+
+        float k = 2f;//save : 22.6f;
+        if (distance <= 0f)
+        {
+            Debug.LogError("La distance doit être > 0");
+            return 0f;
+        }
+
+        // Relation empirique : FOV = k / distance
+        float fov = (k / distance) * 10;
+        //Debug.Log(fov);
         return fov;
     }
 }

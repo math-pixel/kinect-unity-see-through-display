@@ -23,6 +23,8 @@ public class DrawPerpendicularLine : MonoBehaviour
 
         float angle = getAngleBetweenLines(sourceObject.transform.position, playerHead.transform.position, pointsOfObject[0], pointsOfObject[1]);
         objecttoMove.transform.eulerAngles = new Vector3(angle, 0, 0);
+
+        
     }
 
     // Méthode pour accéder à l'angle depuis d'autres scripts
@@ -76,7 +78,7 @@ public class DrawPerpendicularLine : MonoBehaviour
         if (cross.z < 0)
             angleWithYAxis = 360 - angleWithYAxis;
 
-        Debug.Log("Angle avec l'axe Y: " + angleWithYAxis + " degrés");
+        //Debug.Log("Angle avec l'axe Y: " + angleWithYAxis + " degrés");
 
         return angleWithYAxis;
     }
@@ -91,7 +93,7 @@ public class DrawPerpendicularLine : MonoBehaviour
         if (cross.z < 0)
             angleWithYAxis = 360 - angleWithYAxis;
 
-        Debug.Log("Angle avec l'axe Y: " + angleWithYAxis + " degrés");
+        //Debug.Log("Angle avec l'axe Y: " + angleWithYAxis + " degrés");
 
         return angleWithYAxis;
     }
@@ -113,7 +115,7 @@ public class DrawPerpendicularLine : MonoBehaviour
         if (Vector3.Dot(cross, Vector3.up) < 0)
             angle = 360 - angle;
 
-        Debug.Log("Angle entre les deux lignes: " + angle + " degrés");
+        //Debug.Log("Angle entre les deux lignes: " + angle + " degrés");
 
         return angle;
     }

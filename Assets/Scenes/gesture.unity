@@ -869,7 +869,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1380916152}
   smoothSpeed: 0.125
-  translateZ: 1.91
+  translateY: 1.91
+  translateX: 0
 --- !u!114 &522133526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,6 +1292,7 @@ MonoBehaviour:
   treadshold: 0.1
   userCamera: {fileID: 522133523}
   textDebugCamera: {fileID: 64879570}
+  objectTargetlookAt: {fileID: 500610514}
 --- !u!4 &1216205192
 Transform:
   m_ObjectHideFlags: 0
