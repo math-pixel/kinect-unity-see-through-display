@@ -12,17 +12,23 @@ public class DrawPerpendicularLine : MonoBehaviour
 
     private float angleWithYAxis;        // L'angle par rapport à l'axe Y
 
+    public bool autoUpdateAngleOfTarget = false;
+
     void Update()
     {
-        List<Vector3> pointsOfObject = drawPerpendicularLineBetween(sourceObject, screenObject, Color.red);
-        //getAngleBetweenVector(pointsOfObject[1] - pointsOfObject[0], Vector3.up);
 
-        //List<Vector3> pointsOfHead = drawPerpendicularLineBetween(playerHead, screenObject, Color.green);
-        Debug.DrawLine(playerHead.transform.position, sourceObject.transform.position, Color.green);
-        //getAngleBetween(playerHead.transform.position, sourceObject.transform.position, Vector3.up);
+        if (autoUpdateAngleOfTarget)
+        {
+            List<Vector3> pointsOfObject = drawPerpendicularLineBetween(sourceObject, screenObject, Color.red);
+            //getAngleBetweenVector(pointsOfObject[1] - pointsOfObject[0], Vector3.up);
 
-        float angle = getAngleBetweenLines(sourceObject.transform.position, playerHead.transform.position, pointsOfObject[0], pointsOfObject[1]);
-        objecttoMove.transform.eulerAngles = new Vector3(angle, 0, 0);
+            //List<Vector3> pointsOfHead = drawPerpendicularLineBetween(playerHead, screenObject, Color.green);
+            Debug.DrawLine(playerHead.transform.position, sourceObject.transform.position, Color.green);
+            //getAngleBetween(playerHead.transform.position, sourceObject.transform.position, Vector3.up);
+
+            float angle = getAngleBetweenLines(sourceObject.transform.position, playerHead.transform.position, pointsOfObject[0], pointsOfObject[1]);
+            objecttoMove.transform.eulerAngles = new Vector3(angle, 0, 0);
+        }
 
         
     }

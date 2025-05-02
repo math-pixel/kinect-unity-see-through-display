@@ -30,6 +30,9 @@ public class DetectJoints : MonoBehaviour
 
     public GameObject objectTargetlookAt;
 
+    public bool autoUpdateFOV = false;
+    public bool lookAtTarget = true;
+
     // Use this for initialization
     void Start()
     {
@@ -77,12 +80,15 @@ public class DetectJoints : MonoBehaviour
                 gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, new Vector3((-pos.X + offset.x) * multiplier.x, (pos.Y + offset.y) * multiplier.y, (pos.Z + offset.z) * multiplier.z), lerpValue);
 
 
-                // Change Camera FOV
-                //at 1 meter the reel object FOV needed is 22.6 and at 1.5 meter we need 13 FOV
-                float distance = Vector3.Distance(gameObject.transform.position, objectTargetlookAt.transform.position);
-                Debug.Log("distance " + distance);
-                float targetFOV = EstimateFOV(distance);
-                userCamera.fieldOfView = Mathf.Lerp(userCamera.fieldOfView, targetFOV, Time.deltaTime * 1f);
+                if(autoUpdateFOV == true)
+                {
+                    // Change Camera FOV
+                    //at 1 meter the reel object FOV needed is 22.6 and at 1.5 meter we need 13 FOV
+                    float distance = Vector3.Distance(gameObject.transform.position, objectTargetlookAt.transform.position);
+                    Debug.Log("distance " + distance);
+                    float targetFOV = EstimateFOV(distance);
+                    userCamera.fieldOfView = Mathf.Lerp(userCamera.fieldOfView, targetFOV, Time.deltaTime * 1f);
+                }
 
 
                 //Debug.Log("distance " + distance);
@@ -92,12 +98,17 @@ public class DetectJoints : MonoBehaviour
                 
 
 
-                userCamera.enabled = true; // enabled camera follower script after the first position set up because there is a bug lag if not
+                
             }
             //else
             //{
             //    updateTextDebug("no body detected", Color.red);
             //}
+        }
+
+        if (lookAtTarget == true)
+        {
+            userCamera.enabled = true; // enabled camera follower script after the first position set up because there is a bug lag if not
         }
 
     }
