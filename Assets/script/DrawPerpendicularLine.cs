@@ -14,6 +14,9 @@ public class DrawPerpendicularLine : MonoBehaviour
 
     public bool autoUpdateAngleOfTarget = false;
 
+    public GameObject kinect;
+    public bool drawKinectLine = true   ;
+
     void Update()
     {
 
@@ -28,6 +31,11 @@ public class DrawPerpendicularLine : MonoBehaviour
 
             float angle = getAngleBetweenLines(sourceObject.transform.position, playerHead.transform.position, pointsOfObject[0], pointsOfObject[1]);
             objecttoMove.transform.eulerAngles = new Vector3(angle, 0, 0);
+        }
+
+        if (drawKinectLine)
+        {
+            Debug.DrawLine(kinect.transform.position, Vector3.forward * 10, Color.magenta);
         }
 
         

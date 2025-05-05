@@ -14,6 +14,9 @@ public class lookatcamera : MonoBehaviour
     [Range(-10.000f, 10.000f)]
     public float translateX = 0f;
 
+    [Range(-10.000f, 10.000f)]
+    public float translateZ = 0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,7 +26,7 @@ public class lookatcamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        finalTarget = target.position + new Vector3(translateX, translateY, 0);//position.z = finalTarget.position.z + translateZ;
+        finalTarget = target.position + new Vector3(translateX, translateY, translateZ);//position.z = finalTarget.position.z + translateZ;
         transform.LookAt(finalTarget, Vector3.up);
         // Lissage de la rotation pour un effet de "LookAt" plus fluide
         //Quaternion desiredRotation = Quaternion.LookRotation(target.position - transform.position);
