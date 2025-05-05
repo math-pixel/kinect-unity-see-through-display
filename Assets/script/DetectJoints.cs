@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using Windows.Kinect;
 using static UnityEditor.Experimental.GraphView.GraphView;
 

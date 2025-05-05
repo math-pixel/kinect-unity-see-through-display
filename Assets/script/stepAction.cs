@@ -8,7 +8,9 @@ public class stepAction : MonoBehaviour
     public List<GameObject> listObjects;
     private GameObject currentObject;
     private int idObject = 0;
-    
+
+    public progressBar progressBar;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +18,7 @@ public class stepAction : MonoBehaviour
         {
             currentObject = Instantiate(listObjects[0], gameObject.transform.position, Quaternion.identity);
             currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
+            progressBar.updateState(idObject);
         }
     }
 
@@ -54,6 +57,7 @@ public class stepAction : MonoBehaviour
         idObject--;
         currentObject = Instantiate(listObjects[idObject], gameObject.transform.position, Quaternion.identity);
         currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
+        progressBar.updateState(idObject);
     }
 
     void previousStep()
@@ -62,5 +66,6 @@ public class stepAction : MonoBehaviour
         idObject++;
         currentObject = Instantiate(listObjects[idObject], gameObject.transform.position, Quaternion.identity);
         currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
+        progressBar.updateState(idObject);
     }
 }
