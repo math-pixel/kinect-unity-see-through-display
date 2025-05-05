@@ -26,10 +26,7 @@ public class stepAction : MonoBehaviour
         {
             if (idObject + 1 < listObjects.Count)
             {
-                Destroy(currentObject);
-                idObject++;
-                currentObject = Instantiate(listObjects[idObject], gameObject.transform.position, Quaternion.identity);
-                currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
+                previousStep();
             }
         }
         
@@ -37,11 +34,33 @@ public class stepAction : MonoBehaviour
         {
             if (idObject - 1 >= 0)
             {
-                Destroy(currentObject);
-                idObject--;
-                currentObject = Instantiate(listObjects[idObject], gameObject.transform.position, Quaternion.identity);
-                currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
+                nextStep();
             }
         }
+    }
+
+    bool objectIsValid()
+    {
+        bool validateState = true;
+
+        // if object is valid
+
+        return validateState;
+    }
+
+    void nextStep()
+    {
+        Destroy(currentObject);
+        idObject--;
+        currentObject = Instantiate(listObjects[idObject], gameObject.transform.position, Quaternion.identity);
+        currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
+    }
+
+    void previousStep()
+    {
+        Destroy(currentObject);
+        idObject++;
+        currentObject = Instantiate(listObjects[idObject], gameObject.transform.position, Quaternion.identity);
+        currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
     }
 }
