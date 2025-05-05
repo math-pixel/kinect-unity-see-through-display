@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class stepAction : MonoBehaviour
@@ -14,6 +15,7 @@ public class stepAction : MonoBehaviour
         if (listObjects[idObject] != null)
         {
             currentObject = Instantiate(listObjects[0], gameObject.transform.position, Quaternion.identity);
+            currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
         }
     }
 
@@ -27,6 +29,7 @@ public class stepAction : MonoBehaviour
                 Destroy(currentObject);
                 idObject++;
                 currentObject = Instantiate(listObjects[idObject], gameObject.transform.position, Quaternion.identity);
+                currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
             }
         }
         
@@ -37,6 +40,7 @@ public class stepAction : MonoBehaviour
                 Destroy(currentObject);
                 idObject--;
                 currentObject = Instantiate(listObjects[idObject], gameObject.transform.position, Quaternion.identity);
+                currentObject.transform.localScale = new Vector3(0.28f, 0.28f, 0.28f);
             }
         }
     }

@@ -849,8 +849,8 @@ MonoBehaviour:
   BodySrcManager: {fileID: 1720211792}
   DephSrcManager: {fileID: 0}
   TrackedJoint: 3
-  multiplier: {x: 10, y: 10, z: 10}
-  offset: {x: 0, y: 0, z: 0}
+  multiplier: {x: 10, y: 3.54, z: 15.3}
+  offset: {x: 0.02, y: 0, z: 0}
   lerpValue: 2
   treadshold: 0.1
   userCamera: {fileID: 0}
