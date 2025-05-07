@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Windows.Kinect;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DetectJoints : MonoBehaviour
 {
